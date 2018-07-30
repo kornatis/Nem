@@ -24,7 +24,12 @@ function fileApostille(request,response){
 	}
 	
 	// file content from the buffer
-	var fileContent = nem.crypto.js.enc.Utf8.parse(file.buffer);
+	//var fileContent = nem.crypto.js.enc.Utf8.parse(file.buffer);
+
+	var image = file.buffer;
+	
+	var fileContent = 'data:application/x-pdf;base64' +	
+	nem.crypto.js.enc.Base64.stringify(nem.crypto.js.enc.Utf8.parse(image));
 
 	// Create the apostille
 	var apostille = nem.model.apostille.create(common, fileName, fileContent, tag, nem.model.apostille.hashing["SHA256"], false, "", true, nem.model.network.data.testnet.id);

@@ -1,14 +1,19 @@
 // Include the library
 var nem = require("nem-sdk").default;
 
-// Create an NIS endpoint object
-var endpoint = nem.model.objects.create("endpoint")(nem.model.nodes.defaultTestnet, nem.model.nodes.defaultPort);
-
 // Get the Apostille transaction from the chain
 function auditFile(request, response) {
 
+    // Create an NIS endpoint object
+    var endpoint = nem.model.objects.create("endpoint")(nem.model.nodes.defaultTestnet, nem.model.nodes.defaultPort);
+
     const { txHash } = request.params;
     const file = request.file;
+    
+    // file content from the buffer
+    var image = file.buffer;
+		
+	var fileContent = nem.crypto.js.enc.Base64.stringify(nem.crypto.js.enc.Utf8.parse(image.toString('base64')));
 
     if (!txHash) {
         response.status(400).send({ code: 400, description: 'La solicitud contiene sintaxis errónea. Falta el txHash' });
@@ -18,9 +23,6 @@ function auditFile(request, response) {
         response.status(400).send({ code: 400, description: 'No se proporcionó un archivo' });
         return;
 	}
-
-    // file content from the buffer
-    var fileContent = nem.crypto.js.enc.Utf8.parse(file.buffer);
         
         nem.com.requests.transaction.byHash(endpoint, txHash)
         .then(function (res) {

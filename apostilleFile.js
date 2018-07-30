@@ -9,10 +9,17 @@ let common = nem.model.objects.create("common")("","b344aed9ca6ecc5a3bef6ecb3edb
 
 function fileApostille(request,response){
 
+	const { tag } = request.query;
 	const file = request.file;
+	const fileName = request.file.originalname;
+	
 
     if (!request.file) {
         response.status(400).send({ code: 400, description: 'No se proporcionó un archivo' });
+        return;
+	}
+	if (!tag) {
+        response.status(400).send({ code: 400, description: 'No se proporcionó un tag' });
         return;
 	}
 	
@@ -20,7 +27,7 @@ function fileApostille(request,response){
 	var fileContent = nem.crypto.js.enc.Utf8.parse(file.buffer);
 
 	// Create the apostille
-	var apostille = nem.model.apostille.create(common, "mariposa.png", fileContent, "imagen", nem.model.apostille.hashing["SHA256"], false, "", true, nem.model.network.data.testnet.id);
+	var apostille = nem.model.apostille.create(common, fileName, fileContent, tag, nem.model.apostille.hashing["SHA256"], false, "", true, nem.model.network.data.testnet.id);
 
 	// Serialize transfer transaction and announce
 	nem.model.transactions.send(common, apostille.transaction, endpoint)

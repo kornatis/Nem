@@ -1,5 +1,6 @@
 let nem = require("nem-sdk").default;
 var request = require('request');
+var fs = require('fs');
 
 // Create an NIS endpoint object
 let endpoint = nem.model.objects.create("endpoint")(nem.model.nodes.defaultTestnet, nem.model.nodes.defaultPort);
@@ -27,10 +28,9 @@ function fileApostille(request,response){
 	//var fileContent = nem.crypto.js.enc.Utf8.parse(file.buffer);
 
 	var image = file.buffer;
+		
+	var fileContent = nem.crypto.js.enc.Base64.stringify(nem.crypto.js.enc.Utf8.parse(image.toString('base64')));
 	
-	var fileContent = 'data:application/x-pdf;base64' +	
-	nem.crypto.js.enc.Base64.stringify(nem.crypto.js.enc.Utf8.parse(image));
-
 	// Create the apostille
 	var apostille = nem.model.apostille.create(common, fileName, fileContent, tag, nem.model.apostille.hashing["SHA256"], false, "", true, nem.model.network.data.testnet.id);
 

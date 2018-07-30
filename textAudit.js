@@ -1,11 +1,7 @@
 // Include the library
 var nem = require("nem-sdk").default;
 
-// Create an NIS endpoint object
-var endpoint = nem.model.objects.create("endpoint")(nem.model.nodes.defaultTestnet, nem.model.nodes.defaultPort);
 
-// Simulate the file content this
-var fileContent = nem.crypto.js.enc.Utf8.parse('Apostille is awesome !');
 
 // Transaction hash of the Apostille
 //var txHash = "470eaf0b444d7a940e28ebe0a7d77aab7e007e11f6b224acddf444d4b3c6ed44";
@@ -13,6 +9,12 @@ var fileContent = nem.crypto.js.enc.Utf8.parse('Apostille is awesome !');
 // Get the Apostille transaction from the chain
 
 function auditApostille(request, response) {
+
+    // Create an NIS endpoint object
+    var endpoint = nem.model.objects.create("endpoint")(nem.model.nodes.defaultTestnet, nem.model.nodes.defaultPort);
+
+    // Simulate the file content this
+    var fileContent = nem.crypto.js.enc.Utf8.parse(request.body.contentText);
 
     const { txHash } = request.params;
 

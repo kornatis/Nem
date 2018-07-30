@@ -9,8 +9,8 @@ var upload = multer({ storage: multer.memoryStorage() });
 
 var api = express.Router();
 
-api.put('/apostille/create', CreateText.createApostille);
-api.put('/audit/text/:txHash', AuditText.auditApostille);
+api.put('/apostille/create', upload.single('file'), CreateText.createApostille);
+api.put('/audit/text/:txHash', upload.single('file'), AuditText.auditApostille);
 api.put('/apostille/file', upload.single('file'), ApostilleFile.fileApostille);
 api.put('/audit/file/:txHash', upload.single('file'), AuditFile.auditFile);
 

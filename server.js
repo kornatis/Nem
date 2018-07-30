@@ -5,12 +5,9 @@ var ControlRoutes = require('./routesController');
 
 // Use body-parser to handle the PUT data
 const bodyParser = require("body-parser");
-app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
-);
-app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: false, parameterLimit: 1000000000000000000000 }));
+app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use('/services', ControlRoutes);
 

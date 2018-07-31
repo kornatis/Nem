@@ -35,7 +35,6 @@ function auditFile(request, response) {
                 console.log("Apostille is invalid");
                 response.status(500).send("apostille is invalid");
                 console.log(res.transaction);
-                console.log(fileContent);
             }
         })
         .catch(function (err) {

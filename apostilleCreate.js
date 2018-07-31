@@ -8,11 +8,13 @@ let common = nem.model.objects.create("common")("","b344aed9ca6ecc5a3bef6ecb3edb
 
 function createApostille(req,response){
 
+	const { tag } = req.query;
+
 	// Simulate the file content
 	var fileContent = nem.crypto.js.enc.Utf8.parse(req.body.contentText);
 
 	// Create the apostille
-	var apostille = nem.model.apostille.create(common, "Test.txt", fileContent, "Test Apostille", nem.model.apostille.hashing["SHA256"], false, "", true, nem.model.network.data.testnet.id);
+	var apostille = nem.model.apostille.create(common, "Test.txt", fileContent, tag, nem.model.apostille.hashing["SHA256"], false, "", true, nem.model.network.data.testnet.id);
 
 	// Serialize transfer transaction and announce
 	nem.model.transactions.send(common, apostille.transaction, endpoint)

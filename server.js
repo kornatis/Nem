@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: false, parameterLimit: 
 app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use('/services', ControlRoutes);
-
+app.use(express.static('web'));
 // We want to extract the port to publish our app on
 let port = process.env.PORT || 8080;
 

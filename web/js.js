@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function () {
-    let host = "http://192.168.1.100:8080/services"
+    let host = "http://localhost:8080/services"
 
     let operationType
     let textGroup = $('#textGroup')

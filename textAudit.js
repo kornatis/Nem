@@ -21,10 +21,10 @@ function auditApostille(request, response) {
             if (nem.model.apostille.verify(request.body.contentText, res.transaction)) {
                 console.log("Apostille is valid");
                 console.log(res.transaction);
-                response.status(200).send("apostille is valid");
+                response.status(200).send({text:"apostille is valid"});
             } else {
                 console.log("Apostille is invalid");
-                response.status(500).send("apostille is invalid");
+                response.status(500).send({text:"apostille is invalid"});
                 console.log(res.transaction);
                 console.log(fileContent);
             }

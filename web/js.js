@@ -98,7 +98,7 @@ $(document).ready(function () {
         }).done(
             function (data) {
                 textGroup.children('textarea').val('')
-                okAlert.html("Se ha realizado el apostilleo con exito tu codigo es: " + data.transactionHash.data)
+                okAlert.html("Se ha realizado el apostilleo con exito el hash es: " + data.transactionHash.data)
                 okAlert.show()
             }).fail(function (error) {
                 errAlert.show()
@@ -150,7 +150,7 @@ $(document).ready(function () {
                 okAlert.html("La apostilla es valida")
                 okAlert.show()
             }).fail(function (error) {
-                errAlert.show()
+                errAlert.text(error).show()
             })
             .always(function () {
                 progress.hide()

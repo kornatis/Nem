@@ -40,10 +40,10 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
+          <h1 class="mb-5">Apostilla un texto o documento y luego auditalo facilmente!</h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
+          <!-- <form>
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
                 <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
@@ -52,6 +52,31 @@
                 <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
               </div>
             </div>
+          </form> -->
+          <form id="aposForm">
+            <h1>Apostillar
+              <br>
+            </h1>
+            <div class="input-group col-lg-9" id="textGroup">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Texto</span>
+              </div>
+              <textarea class="form-control" aria-label="With textarea" name="aposText"></textarea>
+              <br>
+            </div>
+            <div class="custom-file col-lg-3" id=fileGroup>
+              <input type="file" class="custom-file-input" id="validatedCustomFile" name="file">
+              <label class="custom-file-label" for="validatedCustomFile">Documento</label>
+              <br>
+            </div>
+            <div class="input-group mb-3 col-lg-3" id=tagGroup>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Tag</span>
+              </div>
+              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="aposTag">
+              <br>
+            </div>
+            <button type="submit" class="btn btn-primary" id=aposButton>Apostillar</button>
           </form>
         </div>
       </div>
@@ -70,52 +95,26 @@
     <label class="custom-control-label" for="radio2">Documento</label>
     <br>
   </div>
-  <form id="aposForm">
-    <h1>Apostillar
-      <br>
-    </h1>
-    <div class="input-group" id="textGroup">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Texto</span>
-      </div>
-      <textarea class="form-control" aria-label="With textarea" name="aposText"></textarea>
-      <br>
-    </div>
-    <div class="custom-file" id=fileGroup>
-      <input type="file" class="custom-file-input" id="validatedCustomFile" name="file">
-      <label class="custom-file-label" for="validatedCustomFile">Documento</label>
-      <br>
-    </div>
-    <div class="input-group mb-3" id=tagGroup>
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon3">Tag</span>
-      </div>
-      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="aposTag">
-      <br>
-    </div>
-    <button type="submit" class="btn btn-primary" id=aposButton>Apostillar</button>
-  </form>
+  
   <hr>
   <form id=auditForm>
     <h1>Auditar
       <br>
     </h1>
-    <div class="input-group" id="textGroupAudit">
+    <div class="input-group col-lg-9" id="textGroupAudit">
       <div class="input-group-prepend">
         <span class="input-group-text">Texto</span>
       </div>
       <textarea class="form-control" aria-label="With textarea"></textarea>
       <br>
     </div>
-    <div class="custom-file" id=fileGroupAudit>
+    <div class="custom-file col-lg-3" id=fileGroupAudit>
       <input type="file" class="custom-file-input" id="validatedCustomFile" name="file">
       <label class="custom-file-label" for="validatedCustomFile">Documento</label>
       <br>
     </div>
-    <div class="input-group mb-3" id=codeGroup>
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon3">Codigo</span>
-      </div>
+    <div class="input-group mb-3 col-lg-9" id=codeGroup>
+      <div class="input-group-prepend"><span class="input-group-text" id="basic-addon">HASH:</span></div>
       <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
     </div>
     <button type="submit" class="btn btn-success" id=auditButton>Auditar</button>

@@ -25,11 +25,13 @@ function apostilleFileAccount(request,response){
 	}
 	
 	var image = file.buffer;
+
+	var multisig = "65fbe67da4b1a41cc5a5393241bba9b3fdea26b102134c286ebcdd592408bc04";
 		
 	var fileContent = nem.crypto.js.enc.Base64.stringify(nem.crypto.js.enc.Utf8.parse(image.toString('base64')));
 	
 	// Create the apostille
-	var apostille = nem.model.apostille.create(common, fileName, fileContent, tag, nem.model.apostille.hashing["SHA256"], true, "TCFAFHQBPQVLRWMYKGH7EWCHWOKRGMYPITY2ZPML", true, nem.model.network.data.testnet.id);
+	var apostille = nem.model.apostille.create(common, fileName, fileContent, tag, nem.model.apostille.hashing["SHA256"], true, multisig, true, nem.model.network.data.testnet.id);
 
 	// Serialize transfer transaction and announce
 	nem.model.transactions.send(common, apostille.transaction, endpoint)

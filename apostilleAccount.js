@@ -32,7 +32,7 @@ function apostilleFileAccount(request,response){
 	
 	// Create the apostille
 	var apostille = nem.model.apostille.create(common, fileName, fileContent, tag, nem.model.apostille.hashing["SHA256"], true, multisig, true, nem.model.network.data.testnet.id);
-
+	console.log("data apostilla: ", apostille.data.dedicatedAccount);
 	// Serialize transfer transaction and announce
 	nem.model.transactions.send(common, apostille.transaction, endpoint)
 	.then(function(res){
@@ -42,8 +42,6 @@ function apostilleFileAccount(request,response){
 			response.status(500).send(res.message);
 		} else {
 			console.log("\nTransaction: " + res.message);
-			console.log("\nCreate a file with the fileContent text and name it:\n" + apostille.data.file.name.replace(/\.[^/.]+$/, "") + " -- Apostille TX " + res.transactionHash.data + " -- Date DD/MM/YYYY" + "." + apostille.data.file.name.split('.').pop());
-			console.log("When transaction is confirmed the file should audit successfully in Nano");
 			console.log("\nThe hash is: " + res.transactionHash.data + " to audit");
 			response.send(res);
 		}

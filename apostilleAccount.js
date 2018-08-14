@@ -26,7 +26,7 @@ function apostilleFileAccount(request,response){
 	
 	var image = file.buffer;
 
-	var multisig = "65fbe67da4b1a41cc5a5393241bba9b3fdea26b102134c286ebcdd592408bc04";
+	var multisig = "f11348e56e44002a80dec2a48d5b364fdaeade9865d431adda771461481b14ad";
 		
 	var fileContent = nem.crypto.js.enc.Base64.stringify(nem.crypto.js.enc.Utf8.parse(image.toString('base64')));
 	
